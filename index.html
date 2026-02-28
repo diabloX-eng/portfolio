@@ -38,34 +38,53 @@
                 <a href="#certifs" class="hover:text-blue-600 transition">Certifications</a>
                 <a href="#contact" class="text-blue-600 border-2 border-blue-600 px-4 py-1 rounded-full hover:bg-blue-600 hover:text-white transition">Contact</a>
             </div>
+
+            <button id="menu-btn" class="md:hidden text-blue-900 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-blue-900/98 text-white z-40 flex flex-col items-center justify-center space-y-8 text-xl font-bold uppercase tracking-widest translate-x-full transition-transform duration-300 md:hidden">
+            <button id="close-btn" class="absolute top-6 right-6 text-4xl text-white">&times;</button>
+            
+            <a href="#accueil" class="mobile-link hover:text-blue-400">Accueil</a>
+            <a href="#formation" class="mobile-link hover:text-blue-400">Formation</a>
+            <a href="#competences" class="mobile-link hover:text-blue-400">Compétences</a>
+            <a href="#experience" class="mobile-link hover:text-blue-400">Expériences</a>
+            <a href="#projets" class="mobile-link hover:text-blue-400">Projets</a>
+            <a href="#certifs" class="mobile-link hover:text-blue-400">Certifications</a>
+            <a href="#contact" class="mobile-link bg-white text-blue-900 px-8 py-2 rounded-full shadow-lg">Contact</a>
         </div>
     </nav>
 
 <section id="accueil" class="min-h-screen flex items-center pt-20">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <span class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">Ingénieur en formation</span>
-                <h1 class="text-5xl md:text-6xl font-black mt-4 mb-6 leading-tight text-slate-900">Mohamed Nabil <br><span class="text-blue-600">Ouaja</span></h1>
-                <p class="text-lg text-slate-600 mb-8 leading-relaxed italic">
-                    Élève Ingénieur en 2ème année à l'INSEA, spécialisé en Data Science. À la recherche d'un stage de 2 mois à partir de juillet 2026.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#projets" class="px-8 py-4 gradient-bg text-white rounded-xl font-bold shadow-lg hover:opacity-90 transition">Mes Projets</a>
-                    
-                    <a href="MOHAMED_NABIL_OUAJA_CV_STAGE_DATA.pdf" target="_blank" class="px-8 py-4 bg-white border border-slate-200 rounded-xl font-bold shadow-sm hover:bg-slate-50 transition text-slate-700 flex items-center gap-2">
-                        <i class="fa-solid fa-file-pdf text-red-600"></i> Mon CV
-                    </a>
-                </div>
-            </div>
-            
-            <div class="flex justify-center" data-aos="zoom-in">
-                <div class="profile-img-container">
-                    <div class="absolute inset-0 gradient-bg opacity-10"></div>
-                    <img src="ta-photo.jpg" alt="Mohamed Nabil Ouaja" class="w-full h-full object-cover">
-                </div>
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        
+        <div class="flex justify-center order-1 md:order-2" data-aos="zoom-in">
+            <div class="profile-img-container w-[250px] h-[250px] md:w-[300px] md:h-[300px]">
+                <div class="absolute inset-0 gradient-bg opacity-10"></div>
+                <img src="ta-photo.jpg" alt="Mohamed Nabil Ouaja" class="w-full h-full object-cover">
             </div>
         </div>
-    </section>
+
+        <div class="order-2 md:order-1 text-center md:text-left" data-aos="fade-right">
+            <span class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-sm font-bold uppercase tracking-widest">Ingénieur en formation</span>
+            <h1 class="text-4xl md:text-6xl font-black mt-4 mb-6 leading-tight text-slate-900">Mohamed Nabil <br><span class="text-blue-600">Ouaja</span></h1>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed italic">
+                Élève Ingénieur en 2ème année à l'INSEA, spécialisé en Data Science. À la recherche d'un stage de 2 mois à partir de juillet 2026.
+            </p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                <a href="#projets" class="px-8 py-4 gradient-bg text-white rounded-xl font-bold shadow-lg hover:opacity-90 transition">Mes Projets</a>
+                
+                <a href="MOHAMED_NABIL_OUAJA_CV_STAGE_DATA.pdf" target="_blank" class="px-8 py-4 bg-white border border-slate-200 rounded-xl font-bold shadow-sm hover:bg-slate-50 transition text-slate-700 flex items-center gap-2 group">
+                    <i class="fa-solid fa-file-arrow-down text-red-600 animate-download"></i> 
+                    <span>Mon CV</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
 
     <section id="formation" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-6">
@@ -345,5 +364,31 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ duration: 800, once: true });</script>
+    <script>
+    // Éléments du menu mobile
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    // Fonction pour ouvrir le menu
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
+        document.body.classList.add('overflow-hidden'); // Empêche de scroller derrière
+    });
+
+    // Fonction pour fermer le menu
+    const closeMenu = () => {
+        mobileMenu.classList.add('translate-x-full');
+        document.body.classList.remove('overflow-hidden');
+    };
+
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Ferme le menu automatiquement quand on clique sur un lien
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+    </script>
 </body>
 </html>
