@@ -25,35 +25,45 @@
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans">
 
-    <nav class="fixed w-full z-50 glass-card shadow-sm">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="font-bold text-2xl text-blue-900">MNO<span class="text-blue-500">.</span></span>
+<nav class="fixed w-full z-[100] glass-card shadow-sm border-b border-slate-200/50">
+        <div class="max-w-6xl mx-auto px-5 py-4 flex justify-between items-center">
+            <span class="font-bold text-2xl text-blue-900 tracking-tighter">
+                MNO<span class="text-blue-500">.</span>
+            </span>
             
-            <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-widest">
+            <div class="hidden md:flex items-center space-x-6 text-sm font-bold uppercase tracking-widest">
                 <a href="#accueil" class="hover:text-blue-600 transition">Accueil</a>
                 <a href="#formation" class="hover:text-blue-600 transition">Formation</a>
                 <a href="#competences" class="hover:text-blue-600 transition">Compétences</a>
                 <a href="#experience" class="hover:text-blue-600 transition">Expériences</a>
                 <a href="#projets" class="hover:text-blue-600 transition">Projets</a>
-                <a href="#certifs" class="hover:text-blue-600 transition">Certifications</a>
-                <a href="#contact" class="text-blue-600 border-2 border-blue-600 px-4 py-1 rounded-full hover:bg-blue-600 hover:text-white transition">Contact</a>
+                <a href="#contact" class="bg-blue-800 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition shadow-md">Contact</a>
             </div>
 
-            <button id="menu-btn" class="md:hidden text-blue-900 text-2xl focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
+            <button id="menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-blue-900 bg-blue-50 rounded-lg border border-blue-100">
+                <i class="fa-solid fa-bars-staggered text-xl"></i>
             </button>
         </div>
 
-        <div id="mobile-menu" class="fixed inset-0 bg-blue-900/98 text-white z-40 flex flex-col items-center justify-center space-y-8 text-xl font-bold uppercase tracking-widest translate-x-full transition-transform duration-300 md:hidden">
-            <button id="close-btn" class="absolute top-6 right-6 text-4xl text-white">&times;</button>
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-[200] flex flex-col transform translate-x-full transition-transform duration-500 ease-in-out md:hidden">
             
-            <a href="#accueil" class="mobile-link hover:text-blue-400">Accueil</a>
-            <a href="#formation" class="mobile-link hover:text-blue-400">Formation</a>
-            <a href="#competences" class="mobile-link hover:text-blue-400">Compétences</a>
-            <a href="#experience" class="mobile-link hover:text-blue-400">Expériences</a>
-            <a href="#projets" class="mobile-link hover:text-blue-400">Projets</a>
-            <a href="#certifs" class="mobile-link hover:text-blue-400">Certifications</a>
-            <a href="#contact" class="mobile-link bg-white text-blue-900 px-8 py-2 rounded-full shadow-lg">Contact</a>
+            <div class="flex justify-end p-6">
+                <button id="close-btn" class="w-12 h-12 flex items-center justify-center text-blue-900 text-4xl bg-slate-100 rounded-full">&times;</button>
+            </div>
+            
+            <div class="flex-1 flex flex-col items-center justify-center space-y-7 pb-20">
+                <a href="#accueil" class="mobile-link text-blue-900 text-xl font-bold uppercase tracking-widest">Accueil</a>
+                <a href="#formation" class="mobile-link text-blue-900 text-xl font-bold uppercase tracking-widest">Formation</a>
+                <a href="#competences" class="mobile-link text-blue-900 text-xl font-bold uppercase tracking-widest">Compétences</a>
+                <a href="#experience" class="mobile-link text-blue-900 text-xl font-bold uppercase tracking-widest">Expériences</a>
+                <a href="#projets" class="mobile-link text-blue-900 text-xl font-bold uppercase tracking-widest">Projets</a>
+                <a href="#contact" class="mobile-link bg-blue-800 text-white px-10 py-3 rounded-full font-bold uppercase tracking-widest shadow-xl">Contact</a>
+
+                <div class="flex gap-8 mt-4">
+                    <a href="https://github.com/diabloX-eng" target="_blank" class="text-slate-400 text-2xl"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/mohamed-nabil-ouaja" target="_blank" class="text-[#0077b5] text-2xl"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -364,31 +374,31 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>AOS.init({ duration: 800, once: true });</script>
-    <script>
-    // Éléments du menu mobile
+<script>
+    // Éléments du Menu
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    // Fonction pour ouvrir le menu
+    // Fonction OUVRIR
     menuBtn.addEventListener('click', () => {
         mobileMenu.classList.remove('translate-x-full');
-        document.body.classList.add('overflow-hidden'); // Empêche de scroller derrière
+        document.body.style.overflow = 'hidden'; // Empêche le scroll derrière
     });
 
-    // Fonction pour fermer le menu
+    // Fonction FERMER
     const closeMenu = () => {
         mobileMenu.classList.add('translate-x-full');
-        document.body.classList.remove('overflow-hidden');
+        document.body.style.overflow = 'auto'; // Réactive le scroll
     };
 
     closeBtn.addEventListener('click', closeMenu);
 
-    // Ferme le menu automatiquement quand on clique sur un lien
+    // Fermer le menu quand on clique sur un lien (très important)
     mobileLinks.forEach(link => {
         link.addEventListener('click', closeMenu);
     });
-    </script>
+</script>
 </body>
 </html>
